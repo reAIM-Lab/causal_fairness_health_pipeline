@@ -1,4 +1,3 @@
-## README
 ## Preprocessing the data
 
 This folder contains scripts for processing the data for each of the models
