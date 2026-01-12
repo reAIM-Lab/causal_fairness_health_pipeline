@@ -1,0 +1,32 @@
+## Running Synthetic Experiments
+
+This folder contains scripts for generating synthetic data and evaluating path-specific causal effects using doubly robust estimation.
+
+### 1. Generate Synthetic Data and Baseline Estimates
+- **`construct_synthetic_data.py`**  
+  Generates the synthetic dataset used in all experiments.
+- **`baseline_effect_estimates.py`**  
+  Runs the doubly robust estimator to estimate the **NDE**, **NIE**, and **SE** on the full synthetic data.
+
+### 2. Dimensionality Reduction Methods
+The following scripts implement the dimensionality reduction approaches evaluated in the paper. Each method ranks or learns representations and then runs the causal effect estimation pipeline.
+
+#### Learn X
+- **Standardized Mean Difference (SMD)**  
+  - **`rank_features_estimates.py`**  
+    Ranks features based on standardized mean difference and runs effect estimation.
+
+#### Learn Y
+- **LASSO**
+  - **`implement_lasso_run.py`**  
+    Fits a LASSO regression model and runs the effect estimation pipeline.
+- **Permutation Feature Importance (PFI)**
+  - **`run_pfi_estimation.py`**  
+    Fits an XGBoost model, computes feature importance using PFI, and runs effect estimation.
+
+#### Learn W
+- **Autoencoder**
+  - **`autoencoder_features/train_autoencoder.py`**  
+    Trains an autoencoder to learn reduced representations of *W*.
+  - **`autoencoder_features/estimate_effects.py`**  
+    Estimates causal effects using the learned representations.
