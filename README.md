@@ -1,10 +1,22 @@
 # A pipeline for enabling path-specific causal fairness in observational health data
 
-This repository contains the code used in [A pipeline for enabling path-specific causal fairness in observational health data](https://arxiv.org/abs/2505.16953), a pipeline for mapping observational health data to the structural fairness model, prioritizing paths of known healthcare bias, and enforcing path-specific causal fairness along these paths. 
+This repository contains the code used in **A pipeline for enabling path-specific causal fairness in observational health data**, a pipeline for mapping observational health data to the structural fairness model, prioritizing paths of known healthcare bias, and enforcing path-specific causal fairness along these paths. 
 
 <img src="./causal_fairness.png" width="800">
 
 When training machine learning (ML) models for potential deployment in a healthcare setting, it is essential to ensure that they do not replicate or exacerbate existing healthcare biases. Although many definitions of fairness exist, we focus on path-specific causal fairness, which allows us to better consider the social and medical contexts in which biases occur (e.g., direct discrimination by a clinician or model versus bias due to differential access to the healthcare system) and to characterize how these biases may appear in learned models. In this work, we map the structural fairness model to the observational healthcare setting and create a generalizable pipeline for training causally fair models. The pipeline explicitly considers specific healthcare context and disparities to define a target "fair" model. Our work fills two major gaps: first, we expand on characterizations of the "fairness-accuracy" tradeoff by detangling direct and indirect sources of bias and jointly presenting these fairness considerations alongside considerations of accuracy in the context of broadly known biases. Second, we demonstrate how a foundation model trained without fairness constraints on observational health data can be leveraged to generate causally fair downstream predictions in tasks with known social and medical disparities. This work presents a model-agnostic pipeline for training causally fair machine learning models that address both direct and indirect forms of healthcare bias.
+
+## Experiments
+
+### Foundation Model + Linear Probing
+We use the LLAMA foundation model from the [EHR Foundation Model Benchmark Repository] ([https://github.com/reAIM-Lab](https://github.com/reAIM-Lab/ehr_foundation_model_benchmark) to generate embeddings for each patient task. Use `data_preprocessing/linprob_features.py` and `foundation_model_linprob_training` implement causal fairness interventions for each task. 
+
+### Task-specific schizophrenia prediction model
+We use a validated phenotype to establish a dataset of individuals with psychosis (in `data_preprocessing`). We run the models in `task_specific_model_training` to train baseline and "fair" models to predict schizophrenia onset in this dataset. 
+
+### Synthetic Experiments
+Run the code in `synthetic_experiments` to generate a synthetic dataset and test various dimensionality reduction methods for their impact on path-specific causal effect estimates. 
+
 
 ## Requirements
 All requirements are available as a `conda` enviornment under `causal_fairness_env.yml`. Additionally, the environment needed to run causal effect estimation is stored under `effect_estimates/environment.yml`
