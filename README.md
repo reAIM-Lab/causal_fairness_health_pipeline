@@ -1,6 +1,6 @@
 # A pipeline for enabling path-specific causal fairness in observational health data
 
-This repository contains the code used in **A pipeline for enabling path-specific causal fairness in observational health data**, a pipeline for mapping observational health data to the structural fairness model, prioritizing paths of known healthcare bias, and enforcing path-specific causal fairness along these paths. 
+This repository contains the code used in [**A pipeline for enabling path-specific causal fairness in observational health data**](https://arxiv.org/abs/2601.09841), a pipeline for mapping observational health data to the structural fairness model, prioritizing paths of known healthcare bias, and enforcing path-specific causal fairness along these paths. 
 
 <img src="./causal_fairness.png" width="800">
 
